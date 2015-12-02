@@ -1,0 +1,45 @@
+This is Robert Supnik's Dungeon V3.2B for various DEC Fortrans (VMS, OSF/1,
+and Unix), ported to MS-DOS.
+
+The MS-DOS port was originally done by Volker Blasius in 1994, using
+Microsoft Fortran PowerStation. Unfortunately, that version will only run
+under MS-DOS and Windows 95/98/ME: it does not work under Windows NT/2000/
+XP/2003 due to problems with the Fortran runtime.
+
+I have built this version of the MS-DOS port using the DJGPP MS-DOS port of
+the GNU G77 Fortran compiler. In order to use G77, I started with Robert's
+original Dungeon sources, then added required changes from Volker's MS-DOS
+port. These changes are given below.
+
+Note that cwsdpmi.exe is only required if running under MS-DOS: under
+Windows it is not needed.
+
+David Kinder <d.kinder@btinternet.com> 29th October 2003
+
+-----------------------------------------------------------------------------
+
+- G77 OPEN() does not accept the READONLY argument, which has been removed.
+  Affected modules: GAME.F
+
+- The statement to write something to stdout is not TYPE but PRINT
+  Affected modules: TIMEFNC.F
+
+- G77 ITIME() takes an array of three integers, rather than three integer
+  arguments.
+  Affected modules: GAME.F, SUBR.F
+
+- The random number routine in G77 is called RAND(), not RAN(), and the
+  routine must be initialized with a call to SRAND().
+  Affected modules: SUBR.F
+
+- The record length of UNFORMATTED DIRECT file DTEXT must be specified in
+  bytes, not in long words, so the definition of RECLNT in DPARAM.FOR has
+  been changed from 20 (lw) to 80 (bytes).
+  Affected modules: DPARAM.FOR
+
+- Following a suggestion by Larry Brenkus,
+    PAUSE '--More--' 
+  has been inserted twice in the end-of-game code, to prevent the end-of-
+  game messages from just flashing over the screen.
+  Affected modules: ROOMS.F
+
