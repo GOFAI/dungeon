@@ -4,6 +4,7 @@ C COPYRIGHT 1980, 1990, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA.
 C ALL RIGHTS RESERVED, COMMERCIAL USAGE STRICTLY PROHIBITED
 C WRITTEN BY R. M. SUPNIK
 C
+C 02-Dec-15     EMG     Compile using gfortran      
 C 11-Sep-94	RMS	Fixed bugs in Tree, Slide, Cave2, Magnet, object
 C			substitution.  Added Puzzle Anteroom.
 C 30-Jun-92	RMS	Changed file names to lower case.

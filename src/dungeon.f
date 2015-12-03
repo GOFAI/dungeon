@@ -4,6 +4,7 @@ C COPYRIGHT 1980, 1990, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA.
 C ALL RIGHTS RESERVED, COMMERCIAL USAGE STRICTLY PROHIBITED
 C WRITTEN BY R. M. SUPNIK
 C
+C 02-Dec-15     EMG     Compile using gfortran
 C 16-Aug-94	RMS	Version 3.2.
 C 30-Jun-92	RMS	Changed file names to lower case.
 C 29-Jun-92	RMS	Changed OUTCH to 6 for VAX, UNIX compatibility.
@@ -18,7 +19,7 @@ C
 C
 C Data statements for constant arrays
 C
-	DATA VMAJ/3/,VMIN/2/,VEDIT/'B'/
+	DATA VMAJ/4/,VMIN/0/,VEDIT/'A'/
 C
 	DATA BATDRP/66,67,68,69,70,71,72,65,73/
 C

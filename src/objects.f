@@ -3,7 +3,8 @@ C
 C COPYRIGHT 1980, 1990, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA.
 C ALL RIGHTS RESERVED, COMMERCIAL USAGE STRICTLY PROHIBITED
 C WRITTEN BY R. M. SUPNIK
-C
+
+C 02-Dec-15     EMG     Compile using gfortran      
 C 29-Sep-94	RMS	Fixed bugs in KILL MASTER, palantir, dial button,
 C			well, slide, bat, global brochure, granite wall,
 C			bottle, leaves, broken lamp, beam, robot, thief,

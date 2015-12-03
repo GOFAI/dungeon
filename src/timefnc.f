@@ -4,6 +4,7 @@ C COPYRIGHT 1980, 1990, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA.
 C ALL RIGHTS RESERVED, COMMERCIAL USAGE STRICTLY PROHIBITED
 C WRITTEN BY R. M. SUPNIK
 C
+C 02-Dec-15     EMG     Compile using gfortran      
 C 27-Sep-94	RMS	Fixed bugs in thief demon, fight demon, master actor,
 C			robot actor, dead player, balloon, bell.
 C 30-Jan-94	RMS	Fixed bugs from MS DOS port.

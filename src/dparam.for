@@ -7,6 +7,7 @@ C
 C This file should be included in *all* modules to supply consistent
 C data structure definitions.
 C
+C 02-Dec-15     EMG     Update to compile using gfortran	
 C 29-Sep-94	RMS	Added COUNT, LDOOR, HEADS, COKES, GBROCH, SHOUS,
 C			FORE2, DIGBT.  Deleted SLEPBT.  Modified GLOBAL.
 C 01-Feb-94	RMS	Aligned vocabulary COMMON.
@@ -585,7 +586,7 @@ C
 	CHARACTER*1 VEDIT
 	COMMON /INPUT/ INLNT,INBUF,SUBLNT,SUBBUF
 	COMMON /MISC/ MBASE,STRBIT,
-	1	PLTIME, DARRAY(3),
+	1	PLTIME,DARRAY(3),SHOUR,SMIN,
 	2	BATDRP(9),TMARRAY(3),
 	3	INPCH,OUTCH,DBCH,
 	4	DBGFLG,PRSFLG,GDTFLG,

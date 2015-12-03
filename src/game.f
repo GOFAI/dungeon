@@ -4,6 +4,7 @@ C COPYRIGHT 1980, 1990, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA.
 C ALL RIGHTS RESERVED, COMMERCIAL USAGE STRICTLY PROHIBITED
 C WRITTEN BY R. M. SUPNIK
 C
+C 02-Dec-15     EMG     Compile on gfortran
 C 17-Sep-94	RMS	Fixed TELL/parse fail bug.  Fixed VMS/UNIX
 C			compatibility problem.
 C 30-Jan-94	RMS	Fixed bugs from MS DOS port.
@@ -255,7 +256,9 @@ C
 	I=(DARRAY(1)*64)+(DARRAY(2)*8)+DARRAY(3)	! first seed
 	CALL ITIME(TMARRAY)			! get time.
 	J=(TMARRAY(1)*64)+(TMARRAY(2)*8)+TMARRAY(3)	! second seed
-	CALL INIRND(I,J)			! init random number gen.
+	CALL INIRND(I,J)	! init random number gen.
+	SHOUR=TMARRAY(1)	! set start hour
+	SMIN=TMARRAY(2)		! set start minute
 C
 	WINNER=PLAYER
 	THFPOS=OROOM(THIEF)
