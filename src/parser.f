@@ -69,7 +69,14 @@ C
 	  OUTBUF(I)=BAKBUF(I)
 50	CONTINUE
 	OUTLEN=BAKLEN				! buffer and length.
-100	IF(SPARSE(OUTBUF,OUTLEN,VBFLAG)) 1000,200,300	! do syn scan.
+100	SELECT CASE(SPARSE(OUTBUF,OUTLEN,VBFLAG))	! do syn scan.
+	  CASE (:-1)
+	    GO TO 1000
+	  CASE (1:)
+	    GO TO 300
+	  CASE DEFAULT
+	    GO TO 200
+	END SELECT
 C
 C Parse requires validation
 C
@@ -1153,7 +1160,13 @@ C
 	OBJ=SCHLST(OIDX,AIDX,HERE,0,0,SPCOBJ)	! search room.
 	IF(DFLAG) WRITE(OUTCH,10) OBJ
 10	FORMAT(' SCHLST- ROOM SCH ',I6)
-	IF(OBJ) 1000,200,100			! test result.
+	IF(OBJ.LT.0) THEN			! test result.
+	  GO TO 1000
+	ELSE IF (OBJ.EQ.0) THEN
+	  GO TO 200
+	ELSE
+	  GO TO 100
+	ENDIF
 100	IF((AV.EQ.0).OR.(AV.EQ.OBJ).OR.(OCAN(OBJ).EQ.AV).OR.
 	1	(IAND(OFLAG2(OBJ), FINDBT).NE.0)) GO TO 200
 	CHOMP=.TRUE.				! not reachable.
@@ -1162,7 +1175,13 @@ C
 	NOBJ=SCHLST(OIDX,AIDX,0,AV,0,SPCOBJ)	! search vehicle.
 	IF(DFLAG) WRITE(OUTCH,220) NOBJ
 220	FORMAT(' SCHLST- VEH SCH  ',I6)
-	IF(NOBJ) 800,400,300			! test result.
+	IF(NOBJ.LT.0) THEN			! test result.
+	  GO TO 800
+	ELSE IF (NOBJ.EQ.0) THEN
+	  GO TO 400
+	ELSE
+	  GO TO 300
+	ENDIF
 300	CHOMP=.FALSE.				! reachable.
 	IF(OBJ.EQ.NOBJ) GO TO 400		! same as before?
 	IF(OBJ.NE.0) NOBJ=-NOBJ			! amb result?
@@ -1171,7 +1190,13 @@ C
 400	NOBJ=SCHLST(OIDX,AIDX,0,0,WINNER,SPCOBJ)	! search adventurer.
 	IF(DFLAG) WRITE(OUTCH,430) NOBJ
 430	FORMAT(' SCHLST- ADV SCH  ',I6)
-	IF(NOBJ) 800,900,500			! test result
+	IF(NOBJ.LT.0) THEN			! test result.
+	  GO TO 800
+	ELSE IF (NOBJ.EQ.0) THEN
+	  GO TO 900
+	ELSE
+	  GO TO 500
+	ENDIF
 500	IF(OBJ.EQ.0) GO TO 800			! any previous? no, use nobj.
 	IF(AIDX.NE.0) GO TO 600			! yes, amb, any adj?
 	IF(NOADJS(OBJ).NEQV.NOADJS(NOBJ)) GO TO 700 ! both adj or no adj?
@@ -1634,7 +1659,13 @@ C
 C Also search room
 C
 100	ROBJ=FWIM(SFW1,SFW2,HERE,0,0,NOCARE)
-	IF(ROBJ) 500,600,200			! test result.
+	IF(ROBJ.LT.0) THEN			! test result.
+	  GO TO 500
+	ELSE IF (ROBJ.EQ.0) THEN
+	  GO TO 600
+	ELSE
+	  GO TO 200
+	ENDIF
 C
 C ROBJ > 0: if prev object, fail
 C

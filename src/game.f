@@ -134,7 +134,13 @@ C
 	1	.OR.(PRSO.EQ.BUNOBJ)) GO TO 2900 ! collective object?
 	IF(.NOT.VAPPLI(PRSA)) GO TO 2400	! verb handle?
 2350	CALL RAPPLI(RACTIO(HERE))		! room action?
-2400	IF(PRSCON-1) 2700,2550,2500		! parser reset?
+2400	IF(PRSCON.LT.1) THEN		! parser reset?
+	  GO TO 2700
+	ELSE IF (PRSCON.EQ.1) THEN
+	  GO TO 2550
+	ELSE
+	  GO TO 2500
+	ENDIF
 2500	CALL XENDMV(TELFLG)			! more to do, end of move.
 	GO TO 2300				! do next command.
 C
